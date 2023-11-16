@@ -3,63 +3,29 @@
 namespace App\Http\Controllers\frontend\pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
+use App\Models\Introvideo;
+use App\Models\Overview;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+ 
     public function index()
     {
-        return view('index');
+        // Banner
+        $banner = Banner::first();
+        // Overview Data
+        $overviews = Overview::all();
+        // Services
+        $services = Service::all();
+        // Intro Video
+        $intros = Introvideo::first();
+        
+        return view('index',compact('banner','overviews','services','intros'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

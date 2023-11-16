@@ -52,13 +52,13 @@
                                 <li>
                                     <a href="mailto:hello@atorn.com">
                                         <i class="las la-envelope"></i>
-                                        hello@atorn.com
+                                        {!! setting('site.email') !!}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="tel:+823-456-879">
                                         <i class="las la-phone"></i>
-                                        +0123 456 789
+                                        {!! setting('site.phone') !!}
                                     </a>
                                 </li>
                             </ul>
@@ -67,23 +67,18 @@
                         <div class="col-lg-6 col-sm-6">
                             <ul class="right-info">
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{!! setting('site.fblink') !!}" target="_blank">
                                         <i class="lab la-facebook-f"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{!! setting('site.twitter') !!}" target="_blank">
                                         <i class="lab la-twitter"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" target="_blank">
+                                    <a href="{!! setting('site.instagram') !!}" target="_blank">
                                         <i class="lab la-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="lab la-google-plus"></i>
                                     </a>
                                 </li>
                                 

@@ -3611,7 +3611,7 @@ Go Top Area
 Atorn Banner Area
 =================================================*/
 .atron-banner-area {
-  background-image: url("../img/banner/banner-bg.jpg");
+  /* background-image: url("../img/banner/banner-bg.jpg"); */
   background-size: cover;
   background-position: center center;
 }
