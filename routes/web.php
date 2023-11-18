@@ -24,7 +24,7 @@ Route::get('/', [HomepageController::class, 'index'])->name('index');
 
 
 
-
+Route::get('/advices-on-youtube', [HomepageController::class, 'youtubeVideos'])->name('youtube');
 
 
 
