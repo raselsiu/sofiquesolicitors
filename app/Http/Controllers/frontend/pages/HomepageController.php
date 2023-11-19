@@ -4,7 +4,7 @@ namespace App\Http\Controllers\frontend\pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
-use App\Models\ContactForm;
+use App\Models\Category;
 use App\Models\Fee;
 use App\Models\Introvideo;
 use App\Models\Overview;
@@ -13,6 +13,7 @@ use App\Models\Sitepost;
 use App\Models\Testimonial;
 use App\Models\Youtubesvideo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomepageController extends Controller
 {
@@ -42,6 +43,56 @@ class HomepageController extends Controller
         $yts = Youtubesvideo::all();
         return view('frontend.pages.youtube',compact('yts'));
     }
+
+
+    public function blogs()
+    {
+        $posts = Sitepost::paginate(1);
+        return view('frontend.pages.posts.blog',compact('posts'));
+    }
+
+    public function blogSingleViewPage($id)
+    {
+        $decoded_ID = base64_decode($id);
+        $post = Sitepost::find($decoded_ID);
+        // Recent Post
+        $recentPost = Sitepost::latest()->take(3)->get();
+
+        // Post Category
+
+        $categoryList = Category::all();
+
+
+        return view('frontend.pages.posts.blog_single',compact('post','recentPost','categoryList'));
+    }
+
+    public function categoryWiseSingleView($id)
+    {
+
+
+         $posts = DB::table('siteposts')
+        ->join('categories','categories.id','=','siteposts.category_id')
+        ->where('category_id', $id)
+        ->get();
+
+        // $posts = DB::table('siteposts')->where('category_id', $id)->get();
+        return view('frontend.pages.posts.blog',compact('posts'));
+    }
+
+
+       public function searchPosts(Request $request){
+
+        $search = $request->input('search');
+
+        $posts = Sitepost::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->get();
+
+
+        return view('frontend.pages.posts.blog',compact('posts'));
+
+       }
 
 
 }

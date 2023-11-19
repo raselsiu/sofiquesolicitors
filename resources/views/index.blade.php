@@ -206,18 +206,18 @@
                                             </li>
                                         </ul>
                                         <p>{!! Str::limit($post->description, 160) !!}</p>
-                                        <a href="blog-details.html" class="read-more">
+                                        <a href="{{ route('blogSingleViewPage', $post->id) }}" class="read-more">
                                             Read More <i class="las la-angle-double-right"></i>
                                         </a>
                                     </div>
                                 </div>
                             </a>
-
-                            <div class="banner-btn">
-                                <a href="#" class="default-btn-two" style="background: #330663">View All Posts</a>
-                            </div>
                         </div>
                     @endforeach
+                    <div class="banner-btn">
+                        <a href="{{ route('allBlogs') }}" class="default-btn-two" style="background: #330663">View All
+                            Posts</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -25,6 +25,13 @@ Route::get('/', [HomepageController::class, 'index'])->name('index');
 
 
 Route::get('/advices-on-youtube', [HomepageController::class, 'youtubeVideos'])->name('youtube');
+Route::get('/site-blogs', [HomepageController::class, 'blogs'])->name('allBlogs');
+Route::get('/single-blogs/{id}', [HomepageController::class, 'blogSingleViewPage'])->name('blogSingleViewPage');
+Route::get('/single-blogs-category/{id}', [HomepageController::class, 'categoryWiseSingleView'])->name('categoryWiseSingleView');
+
+
+
+Route::get('/search-blogs', [HomepageController::class, 'searchPosts'])->name('searchPosts');
 
 
 
